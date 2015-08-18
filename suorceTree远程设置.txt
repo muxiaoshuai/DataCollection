@@ -1,0 +1,4 @@
+我们用sourceTree远程提交代码的时候，如果未设置用户名密码，一般会push时提示输入用户名密码
+若如下配置
+https://username:password@github.com/muxiaoshuai/DataConnection.git
+就可以免去每次都要输入
