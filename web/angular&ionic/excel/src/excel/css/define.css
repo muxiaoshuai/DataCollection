@@ -1,0 +1,8 @@
+.define-control{
+    height: 25px;
+    padding: 0px 12px;
+}
+
+.define-control:focus ,.define-control:hover,.define-control.active:hover,.define-control.active:focus{
+      background-color: #337ab7;
+}

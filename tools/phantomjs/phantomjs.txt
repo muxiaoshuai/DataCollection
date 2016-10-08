@@ -1,0 +1,24 @@
+1、下载
+wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
+
+2、安装
+tar -xvf phantomjs-2.1.1-linux-x86_64.tar.bz2
+
+3、将程序移到一个合适的位置 //没做
+ sudo mv phantomjs-2.1.1-linux-x86_64 /usr/local/src/phantomjs   
+
+4、创建软链接到环境变量中。这样可以直接在shell中使用phantomjs命令
+ln -sf /usr/local/src/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
+
+5、检查是否正常工作
+phantomjs –v
+
+
+
+问题：截图中文不显示
+
+解决：
+# 列出所有已经安装的中文字体，如果还没有安装中文字体，可参考上文提到的文章。
+fc-list :lang=zh
+linux -- /usr/share/fonts  my_fonts
+

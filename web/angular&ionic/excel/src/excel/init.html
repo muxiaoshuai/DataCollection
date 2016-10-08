@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--<div>
+    <span style="width:100px" ui-sref=".define"><a href="">define</a></span>
+    <span style="width:100px" ui-sref=".transform"><a href="">transform</a></span>
+</div>
+<div>
+    <div ui-view=""/>
+</div>-->
+<div  class="container">
+    <div>
+        <img src="images/state_init.png" style="width: 100%;text-align: center;">
+    </div>
+
+
+    <!--<button ng-click="goDefine();">go define</button>-->
+
+    <div class="container">
+        <h4>下载数据模板</h4>
+        <div  style="margin-left: 100px">
+            <div> <a   href="http://localhost:8888/123.xlsx" download="http://localhost:8888/123.xlsx">按照条码格式</a></div>
+            <div> <a href="http://mint.lifecycle.cn:8001/servlets/binserv/BFile?f=/output/lifecycle-core.5.1.0.6271.jar">按照尺码横排</a></div>
+        </div>
+
+    </div>
+
+
+
+    <div class="container">
+        <h4>上传文件</h4>
+        <div  style="margin-left: 100px">
+
+           <!-- <form class="form-group" name="form">
+                <div class="form-line">
+                    <div  class="choose-file-area">
+                        <div style="float:left">
+                            <input class="form-control init-file-name" type="text" readonly="readonly" ng-model="fileItem.name"/>
+                            <a href="javascript:;" class="choose-book init-a" style="width:60px;margin-left:-18%;margin-bottom:-10px">
+                                <p class="glyphicon glyphicon-search"></p>
+                                <input type="file" name="certificate" nv-file-select uploader="uploader" ng-click="clearItems()"  accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/> 浏览
+                            </a>
+                        </div>
+
+                        <td ng-show="uploader.isHTML5" >
+                            <div class="progress" style="margin-bottom: 0;width: 40%;float: left;margin-top:5px" ng-show="progress">
+                                <div class="progress-bar active" role="progressbar" ng-style="{ 'width': progress + '%' }" > <span class="sr-only">{{progress}}%</span></div>
+                            </div>
+                        </td>
+
+                        &lt;!&ndash; <td style="width: 10%" ng-show="uploader.isHTML5" nowrap>{{ fileItem.size/1024/1024|number:2 }} MB</td>&ndash;&gt;
+                        <td class="text-center">
+                            <span ng-show="isSuccess"><i class="glyphicon glyphicon-ok" style="margin-top: 6px;left: 4%"></i></span>
+                            <span ng-show="isError"><i class="glyphicon glyphicon-remove" style="margin-top: 6px;left: 4px"></i></span>
+                        </td>
+                    </div>
+
+                </div>
+            </form>-->
+
+          <!--  <div style="clear: both;"/>-->
+
+            <form class="form-group" name="form">
+                <div class="form-line">
+                    <div  class="choose-file-area row">
+                        <div style="float:left" class="col-md-5">
+                            <input class="form-control init-file-name" type="text" readonly="readonly" ng-model="fileItem.name"/>
+                            <a href="javascript:;" class="choose-book init-a" style="width:20%;margin-left:-20%;margin-bottom:-10px">
+                                <p class="glyphicon glyphicon-search"></p>
+                                <input type="file" name="certificate" nv-file-select uploader="uploader" ng-click="clearItems()"  accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/> 浏览
+                            </a>
+                        </div>
+
+                        <td ng-show="uploader.isHTML5" class="col-md-6">
+                            <div class="progress" style="margin-bottom: 0;width: 40%;float: left;margin-top:5px" ng-show="progress">
+                                <div class="progress-bar active" role="progressbar" ng-style="{ 'width': progress + '%' }" > <span class="sr-only">{{progress}}%</span></div>
+                            </div>
+                        </td>
+
+                        <td class="text-center" class="col-md-1">
+                            <span ng-show="isSuccess"><i class="glyphicon glyphicon-ok" style="margin-top: 6px;left: 4%"></i></span>
+                            <span ng-show="isError"><i class="glyphicon glyphicon-remove" style="margin-top: 6px;left: 4px"></i></span>
+                        </td>
+                    </div>
+
+                </div>
+            </form>
+
+            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="isError" style="margin-top: 30px">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong>错误!</strong>文件上传失败.
+            </div>
+
+
+            <!-- Button trigger modal -->
+            <div>
+                <div style="display: block">最大文件允许200MB，数据行200万</div>
+                <!-- <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-if="hasTask" ng-disabled="isDisabled">开始新任务</button>-->
+                <button type="submit" class="btn btn-primary" ng-click="startNewTask();" ng-disabled="isDisabled">开始新任务</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid"  ng-show="hasTask">
+        <h4>最近任务</h4>
+        <div  style="margin-left: 100px">
+            <h4><span class="glyphicon glyphicon-warning-sign" style="color: rgb(255, 207, 115);"></span>&nbsp;&nbsp;你最近一次的导入尚未完成</h4>
+            <div>开始时间：<span >2016-9-13 15:46:15</span></div>
+            <div>文件名称：<span>上海杨浦店9月汇总.xlsx</span></div>
+            <div>状态:<span>调整</span></div>
+            <div>文件大小:<span>30MB</span></div>
+            <button type="submit" class="btn btn-primary" ng-click="runOldTask();">继续处理</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                </div>
+                <div class="modal-body">
+                    开始新任务，作废未完成任务，确定继续？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="startTask();">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+    "name": "Lifecycle-Excel",
+    "description": "",
+    "main": "excel.js",
+    "authors": [
+        "Lifecycle co.,ltd."
+    ],
+    "dependencies": {
+        "angular": "*",
+        "angular-file-upload":"*" ,
+        "bootstrap":"*",
+        "angular-ui-router":"*"  ,
+        "ag-grid":"*" ,
+        "angular-translate":"*" ,
+        "angular-translate-loader-url":"*",
+        "angular-translate-loader-static-files":"*"
+
+    },
+    "private": true
+}

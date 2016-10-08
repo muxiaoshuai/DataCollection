@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        label { font-weight: normal !important; }
+        .blue { background-color: darkblue; color: lightblue; }
+
+        .ag-fresh .good-score { background-color: rgba(0,200,0,0.4) }
+        .ag-blue .good-score { background-color: rgba(0,200,0,0.4) }
+        .ag-dark .good-score { background-color: rgba(0,100,0,0.4) }
+
+        .ag-fresh .bad-score { background-color: rgba(200,0,0,0.4) }
+        .ag-blue .bad-score { background-color: rgba(200,0,0,0.4) }
+        .ag-dark .bad-score { background-color: rgba(100,0,0,0.4) }
+
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div>
+        <img src="images/state_review.png" style="width: 100%;text-align: center;">
+    </div>
+
+    <div class="container">
+
+        <h4>在线修改</h4>
+        <a href="#">正常行数：880、056</a>  <a href="#" style="margin-left: 5%">错误行数：15</a>
+
+        <br/><br/>
+
+        <div>
+
+                <button  class="btn btn-primary" ng-click="deleteSelects(index);" >删除选中行</button>
+                <button  class="btn btn-primary" ng-click="deleteAll();" style="margin-left: 4%">删除全部</button>
+
+                <a href="" style="margin-left: 3%" ng-click="outARRow()">{导出全部错行}</a>
+                <button type="submit" class="btn btn-primary" ng-click="saveChange();" style="margin-left:650px">保存编辑</button>
+
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="no-user-select" style="height: 200px; margin: 0px; padding: 0px;">
+
+        <div ag-grid="gridOptions" class="ag-dark" style="height: 100%; width: 100%;"></div>
+
+        <div class="container">
+            <br/>
+            <nav>
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </nav>
+            <br/>
+
+            <button  class="btn btn-primary" onclick="history.back(-1);">返回</button>
+            <button type="submit" class="btn btn-primary" ng-click="againTransform();" style="margin-left: 3%">开始迁移></button>
+
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>

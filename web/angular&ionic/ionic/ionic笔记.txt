@@ -1,0 +1,21 @@
+$ionicHistory.clearHistory();
+    //   $state.go('b2b.tab.home');
+$ionicHistory.clearCache().then(function(){ $state.go('b2b.tab.home') })
+
+
+angular.module('app.b2b.pdtList', ['ionic'])
+    .config(['$stateProvider', function ($stateProvider) {
+
+        $stateProvider
+            .state('b2b.pdtList', {
+                url: '/pdtList/:fairType/:searchType/:val/:categoryfir/:categorysec/:categorythr/:top_name',
+                templateUrl: 'templates/b2b/pdtList/pdtList.html',
+                controller: 'b2bPdtList'
+            });
+    }]);
+	
+$stateParams.fairType
+
+<ion-content  delegate-handle="market-content" id="eventTop"></ion-content>
+$ionicScrollDelegate.$getByHandle('market-content').scrollTop();
+$ionicScrollDelegate.$getByHandle('market-content').scrollTo(0, actPosition);
